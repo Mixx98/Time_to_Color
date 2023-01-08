@@ -1,0 +1,339 @@
+/* 이미지 슬라이드 (미니) */
+@media all and (max-width: 572px) {
+  .header > ul {
+    height: 25%;
+  }
+
+  .header > ul > li {
+    font-size: 10px;
+  }
+
+  .main > .title {
+    height: 300px;
+  }
+
+  .main > .title > h1 {
+    padding: 50px 0 0 0;
+  }
+
+  .main > .title > h1 > p {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .main > .profile {
+    height: 550px;
+  }
+
+  .main > .profile > .box {
+    padding: 0;
+    display: grid;
+  }
+
+  .main > .profile > .box > div:first-child {
+    padding: 80px 0 0 0;
+  }
+
+  .main > .profile > .box > div > div > p {
+    font-size: 15px;
+  }
+
+  #container {
+    width: 300px;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #slideShow {
+    width: 300px;
+  }
+
+  .main > .photo > .box > #slideShow > .controller > span {
+    top: 45%;
+  }
+
+  .main > .photo > .box > #slideShow > .slides > li:first-child {
+    margin-left: 0;
+  }
+
+  .main > .career > .box > ul > li {
+    font-size: 15px;
+  }
+
+  .main > .color {
+    height: 430px;
+  }
+
+  .main > .color > p:nth-child(2) {
+    font-size: 20px;
+  }
+
+  .main > .color > p:nth-child(3) {
+    font-size: 15px;
+  }
+
+  .main > .color > .box {
+    margin: 50px 0;
+    padding: 0;
+    display: grid;
+    justify-content: center;
+  }
+
+  #data {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .label {
+    margin-top: 30px;
+    font-size: 15px;
+    padding-bottom: 10px;
+  }
+
+  #inputTime {
+    width: 150px;
+    height: 20px;
+  }
+
+  #button {
+    width: 60px;
+    height: 24px;
+  }
+
+  .top-button {
+    width: 40px;
+    height: 40px;
+    bottom: 40px;
+    right: 40px;
+  }
+}
+
+/* 이미지 슬라이드 (1칸) */
+@media all and (min-width: 572px) and (max-width: 784px) {
+  .header > ul {
+    height: 50%;
+  }
+
+  .header > ul > li {
+    font-size: 15px;
+  }
+
+  .main > .title {
+    height: 300px;
+  }
+
+  .main > .title > h1 {
+    padding: 50px 0 0 0;
+  }
+
+  .main > .title > h1 > p {
+    font-size: 70px;
+  }
+
+  h2 {
+    font-size: 35px;
+  }
+
+  .main > .profile {
+    height: 380px;
+  }
+
+  .main > .profile > .box > div:first-child {
+    padding: 80px 0 0 0;
+  }
+
+  .main > .profile > .box > div > div > p {
+    font-size: 15px;
+  }
+
+  #container {
+    width: 300px;
+    height: 300px;
+    margin: 0;
+    padding-top: 20px;
+  }
+
+  #slideShow {
+    width: 500px;
+  }
+
+  .main > .career > .box > ul > li {
+    font-size: 20px;
+  }
+
+  .main > .color {
+    height: 500px;
+  }
+
+  .main > .color > .box {
+    margin: 50px 0;
+    display: grid;
+    justify-content: center;
+  }
+
+  #data {
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .label {
+    margin-top: 30px;
+    font-size: 20px;
+  }
+
+  .top-button {
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+    right: 50px;
+  }
+}
+
+/* 이미지 슬라이드 (1칸) */
+@media all and (min-width: 784px) and (max-width: 1080px) {
+  .header > ul > li {
+    font-size: 20px;
+  }
+
+  .main > .title {
+    height: 500px;
+  }
+
+  .main > .title > h1 {
+    padding-top: 100px;
+  }
+
+  .main > .title > h1 > p {
+    font-size: 120px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  .main > .profile {
+    height: 480px;
+  }
+
+  .main > .profile > .box > div:first-child {
+    padding-top: 140px;
+  }
+
+  .main > .profile > .box > div > div > p {
+    font-size: 20px;
+  }
+
+  #container {
+    width: 400px;
+    height: 400px;
+    margin: 0;
+    padding-top: 20px;
+  }
+
+  #slideShow {
+    width: 500px;
+  }
+
+  .main > .career > .box > ul > li {
+    font-size: 25px;
+  }
+
+  .main > .color {
+    height: 350px;
+  }
+
+  .main > .color > .box {
+    padding: 0;
+  }
+
+  #data {
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .label {
+    font-size: 20px;
+    padding: 15px 0;
+  }
+
+  #inputTime {
+    width: 180px;
+  }
+
+  .top-button {
+    width: 50px;
+    height: 50px;
+    bottom: 60px;
+    right: 60px;
+  }
+}
+
+/* 이미지 슬라이드 (2칸) */
+@media all and (min-width: 1080px) and (max-width: 1580px) {
+  #container {
+    width: 450px;
+    height: 450px;
+    margin: 0;
+    padding-top: 50px;
+  }
+
+  #slideShow {
+    width: 900px;
+  }
+
+  .main > .color > .box {
+    padding: 0;
+  }
+
+  #data {
+    font-size: 35px;
+    font-weight: 600;
+  }
+}
+
+/* 이미지 슬라이드 (3칸) 기본설정 */
+
+/* 이미지 슬라이드 (4칸) */
+@media all and (min-width: 2000px) {
+  .header > ul {
+    height: 200%;
+  }
+
+  .header > ul > li {
+    font-size: 35px;
+  }
+
+  .main > .title {
+    height: 800px;
+  }
+
+  .main > .title > h1 {
+    padding: 200px 0 0 0;
+  }
+
+  .main > .title > h1 > p {
+    font-size: 220px;
+  }
+
+  #slideShow {
+    width: 1700px;
+  }
+
+  .label {
+    font-size: 30px;
+  }
+
+  #inputTime {
+    width: 220px;
+    height: 30px;
+  }
+
+  #button {
+    width: 70px;
+    height: 34px;
+  }
+}

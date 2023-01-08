@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- 기본선언 -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./media.css" />
+    <link rel="stylesheet" href="./normalize.css" />
+
+    <script defer type="module" src="./js/chart.js"></script>
+    <script defer type="module" src="./js/profile.js"></script>
+    <script defer type="module" src="./js/career.js"></script>
+    <script defer src="./js/app.js"></script>
+    <script defer src="./js/changeColor.js"></script>
+    <script defer src="./js/slide.js"></script>
+    <script defer src="./js/guest.js"></script>
+    <script defer src="./js/animation.js"></script>
+
+    <title>Time to Color</title>
+
+    <!-- 차트 -->
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-radar.min.js"></script>
+
+    <!-- 파비콘 -->
+    <link rel="icon" href="./img/icon.png" />
+  </head>
+  <body>
+    <button class="top-button"></button>
+    <header class="header">
+      <ul>
+        <!-- 메뉴 -->
+        <li>Profile</li>
+        <li>Photo</li>
+        <li>Career</li>
+        <li>Color</li>
+        <li>Guest</li>
+      </ul>
+    </header>
+    <main class="main">
+      <div class="title">
+        <h1>
+          <!-- 타이틀 글자 -->
+        </h1>
+      </div>
+      <div class="profile">
+        <div class="box">
+          <!-- 프로필 정보 -->
+          <div>
+            <h2>윤현수</h2>
+            <div>
+              <!-- profile -->
+            </div>
+          </div>
+          <div>
+            <div id="container"></div>
+          </div>
+        </div>
+      </div>
+      <div class="photo">
+        <div class="box">
+          <!-- 이미지 슬라이드 -->
+          <h2>Photo</h2>
+          <div id="slideShow">
+            <ul class="slides"></ul>
+            <p class="controller">
+              <!-- &lang: 왼쪽 방향 화살표 &rang: 오른쪽 방향 화살표 -->
+              <span class="left">&lang;</span>
+              <span class="right">&rang;</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="career">
+        <div class="box">
+          <!-- 경력 -->
+          <h2>Career</h2>
+          <ul>
+            <!-- career -->
+          </ul>
+        </div>
+      </div>
+      <div class="color">
+        <!-- 컬러정보와 수정기능 -->
+        <h2>Color</h2>
+        <p>여러분의 시간은 무슨 색인가요??</p>
+        <p>
+          1ms단위로 색이 저장되어 있습니다. 총 83,886,080개의 색을 만나보세요~!!
+        </p>
+        <div class="box">
+          <div>
+            <p id="data"></p>
+          </div>
+          <form>
+            <p class="label">시간을 변경해 보세요</p>
+            <input
+              type="text"
+              id="inputTime"
+              placeholder=" H : M : S : ms"
+              onkeyup="enterkey()"
+            />
+            <button id="button">변경</button>
+          </form>
+        </div>
+      </div>
+      <div class="guest">
+        <h2>Guest</h2>
+        <div class="box">
+          <p>여러분의 좋았던 시간을 적어주세요!!</p>
+          <form>
+            <input type="text" placeholder=" H : M : S : ms" />
+            <button>제출</button>
+          </form>
+          <ul></ul>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Author by YunHyunsue <br />
+        Copyright ⓒ 2023 YunHyunsue. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
