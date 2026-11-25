@@ -1,15 +1,32 @@
 const photos = [13, 12, 11, 9, 8, 7, 6, 5, 4, 2, 1];
-const photo = document.querySelector("#photo");
+const slides = document.querySelector(".slides");
 const count = document.querySelector("#photo-count");
-const previous = document.querySelector("#previous-photo");
-const next = document.querySelector("#next-photo");
-let photoIndex = 0;
+const previous = document.querySelector(".left");
+const next = document.querySelector(".right");
 
-function showPhoto(index) {
-  photoIndex = (index + photos.length) % photos.length;
-  photo.src = "./img/slide/" + photos[photoIndex] + ".jpg";
-  count.textContent = (photoIndex + 1) + " / " + photos.length;
+photos.forEach((number, index) => {
+  const item = document.createElement("li");
+  const photo = new Image();
+  photo.src = "./img/slide/" + number + ".jpg";
+  photo.alt = "사진 " + (index + 1);
+  photo.loading = "lazy";
+  item.append(photo);
+  slides.append(item);
+});
+
+function movePhoto(direction) {
+  const step = slides.children[1].offsetLeft - slides.children[0].offsetLeft;
+  const max = slides.scrollWidth - slides.clientWidth;
+  const target = slides.scrollLeft + direction * step;
+  slides.scrollLeft = target > max + 1 && slides.scrollLeft >= max - 1
+    ? 0
+    : target < 0 && slides.scrollLeft <= 1 ? max : target;
 }
 
-previous.addEventListener("click", () => showPhoto(photoIndex - 1));
-next.addEventListener("click", () => showPhoto(photoIndex + 1));
+slides.addEventListener("scroll", () => {
+  const step = slides.children[1].offsetLeft - slides.children[0].offsetLeft;
+  count.textContent = (Math.round(slides.scrollLeft / step) + 1) + " / " + photos.length;
+}, { passive: true });
+
+previous.addEventListener("click", () => movePhoto(-1));
+next.addEventListener("click", () => movePhoto(1));

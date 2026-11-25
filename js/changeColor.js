@@ -26,7 +26,8 @@ function timeToColor([hours, minutes, seconds, milliseconds]) {
   return "#" + rgb + (alpha === 100 ? "" : String(alpha));
 }
 
-const liveSwatch = document.querySelector("#live-swatch");
+const titleHeading = document.querySelector(".title h1");
+let selectedTitleColor;
 const liveTime = document.querySelector("#live-time");
 const selectedSwatch = document.querySelector("#selected-swatch");
 const colorResult = document.querySelector("#color-result");
@@ -35,7 +36,7 @@ const colorError = document.querySelector("#color-error");
 
 function updateLiveColor() {
   const time = clockTime();
-  liveSwatch.style.setProperty("--sample", timeToColor(time));
+  titleHeading.style.setProperty("--time-color", selectedTitleColor ?? timeToColor(time));
   liveTime.textContent = formatTime(time).slice(0, 8);
 }
 
@@ -58,5 +59,13 @@ document.querySelector("#color-form").addEventListener("submit", (event) => {
     return;
   }
   timeInput.removeAttribute("aria-invalid");
+  selectedTitleColor = timeToColor(time);
+  titleHeading.style.setProperty("--time-color", selectedTitleColor);
   showColor(time);
+});
+
+titleHeading.addEventListener("pointerdown", (event) => {
+  if (event.pointerType !== "touch" || !event.target.matches(".title-word > span")) return;
+  titleHeading.querySelector(".touched")?.classList.remove("touched");
+  event.target.classList.add("touched");
 });
