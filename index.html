@@ -1,127 +1,141 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <!-- 기본선언 -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./main.css" />
-    <link rel="stylesheet" href="./media.css" />
-    <link rel="stylesheet" href="./normalize.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="웹, 하드웨어, IoT를 실험하는 윤현수의 포트폴리오와 시간 색상 실험 Time to Color">
+  <title>윤현수 · Time to Color</title>
+  <link rel="icon" href="./img/icon.png">
+  <link rel="stylesheet" href="./main.css">
+  <script defer src="./js/changeColor.js"></script>
+  <script defer src="./js/guest.js"></script>
+  <script defer src="./js/slide.js"></script>
+</head>
+<body id="top">
+  <header class="shell header">
+    <a class="brand" href="#top">Time to Color</a>
+    <nav aria-label="주 메뉴">
+      <a href="#projects">프로젝트</a>
+      <a href="#color">시간의 색</a>
+      <a href="#about">활동</a>
+      <a href="#photos">사진</a>
+      <a href="#guest">방명록</a>
+    </nav>
+  </header>
+  <main class="shell">
+    <section class="hero" aria-labelledby="intro">
+      <div>
+        <p class="eyebrow">HYUNSUE YUN / MIXX98</p>
+        <h1 id="intro">윤현수</h1>
+        <p class="intro">아이디어를 직접 만들어 실험합니다.</p>
+        <p>움직임과 글자가 음악이 되는 웹부터 센서 데이터를 보내는 IoT 기기까지, 입력이 새로운 경험으로 이어지는 프로젝트를 만듭니다.</p>
+        <div class="actions">
+          <a class="primary" href="#projects">프로젝트 보기</a>
+          <a href="https://github.com/Mixx98">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="hero-color">
+        <div id="live-swatch" aria-hidden="true"></div>
+        <div class="swatch-label"><span>지금의 색 · 현지 시간</span><span id="live-time"></span></div>
+      </div>
+    </section>
 
-    <script defer type="module" src="./js/chart.js"></script>
-    <script defer type="module" src="./js/profile.js"></script>
-    <script defer type="module" src="./js/career.js"></script>
-    <script defer src="./js/app.js"></script>
-    <script defer src="./js/changeColor.js"></script>
-    <script defer src="./js/slide.js"></script>
-    <script defer src="./js/guest.js"></script>
-    <script defer src="./js/animation.js"></script>
+    <section id="projects" aria-labelledby="project-heading">
+      <h2 id="project-heading">프로젝트</h2>
+      <div class="project-grid">
+        <article class="card featured">
+          <p class="eyebrow">인터랙티브 웹 · 개인</p>
+          <h3>Mouvement</h3>
+          <p>마우스와 터치의 움직임, 키보드와 글자 입력을 음악으로 바꿉니다. Web Audio API로 악기 음색을 합성하고 반주와 함께 연주할 수 있습니다.</p>
+          <div class="actions"><a href="https://mixx98.github.io/Mouvement/">연주하기 ↗</a><a href="https://github.com/Mixx98/Mouvement">소스 ↗</a></div>
+        </article>
+        <article class="card">
+          <p class="eyebrow">웹 · 팀</p>
+          <h3>BottleShop</h3>
+          <p>와인·치즈 쇼핑몰. 프론트엔드에서 관리자 화면, 회원가입, 로그인을 담당했습니다.</p>
+          <a href="https://github.com/Mixx98/BottleShop">BottleShop 소스 ↗</a>
+        </article>
+        <article class="card">
+          <p class="eyebrow">IoT · 개인</p>
+          <h3>SmartFarm</h3>
+          <p>ESP32로 온습도·조도·토양 수분을 측정해 MQTT로 전송하고, 조명과 펌프를 원격 제어합니다.</p>
+          <a href="https://github.com/Mixx98/SmartFarm">SmartFarm 소스 ↗</a>
+        </article>
+        <article class="card">
+          <p class="eyebrow">임베디드 · 팀</p>
+          <h3>자율주행 RC카</h3>
+          <p>ESP32, GPS, 라이다를 이용해 장애물을 피하는 RC카입니다. 앱으로 수동 조종할 수도 있습니다.</p>
+          <a href="https://github.com/Mixx98/A-self-driving-car-Project">RC카 소스 ↗</a>
+        </article>
+        <article class="card">
+          <p class="eyebrow">음성 AI · 개인</p>
+          <h3>VoiceGPT</h3>
+          <p>음성 질문을 텍스트로 변환하고 GPT의 답변을 음성으로 읽어주는 Python 프로젝트입니다.</p>
+          <a href="https://github.com/Mixx98/VoiceGPT">VoiceGPT 소스 ↗</a>
+        </article>
+      </div>
+      <p><a href="https://github.com/Mixx98?tab=repositories">GitHub 저장소 전체 보기 ↗</a></p>
+    </section>
 
-    <title>Time to Color</title>
+    <section id="color" aria-labelledby="color-heading">
+      <h2 id="color-heading">시간의 색</h2>
+      <p>하루를 약 1.03ms 단위로 나누고 RGB와 다섯 가지 투명도를 조합해 시간마다 색을 표시합니다.</p>
+      <div class="card color-layout">
+        <div>
+          <div id="selected-swatch" class="selected-swatch" aria-hidden="true"></div>
+          <p id="color-result" role="status"></p>
+        </div>
+        <form id="color-form">
+          <label for="inputTime">색으로 보고 싶은 시간</label>
+          <p id="color-hint" class="hint">시:분:초:밀리초 (예: 14:30:00:000)</p>
+          <div class="form-row">
+            <input id="inputTime" aria-describedby="color-hint color-error" placeholder="14:30:00:000">
+            <button type="submit">색 보기</button>
+          </div>
+          <p class="error" id="color-error" role="alert"></p>
+        </form>
+      </div>
+    </section>
 
-    <!-- 차트 -->
-    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-radar.min.js"></script>
-
-    <!-- 파비콘 -->
-    <link rel="icon" href="./img/icon.png" />
-  </head>
-  <body>
-    <button class="top-button"></button>
-    <header class="header">
-      <ul>
-        <!-- 메뉴 -->
-        <li>Profile</li>
-        <li>Photo</li>
-        <li>Career</li>
-        <li>Color</li>
-        <li>Guest</li>
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">활동 및 자격</h2>
+      <ul class="card activities">
+        <li>Microsoft Azure Data Fundamentals</li>
+        <li>엘리스 IoT 트랙</li>
+        <li>마크베이스 시계열 데이터베이스 과정 수료</li>
+        <li>마로마브 아두이노 코딩 인재 양성 교육과정 수료</li>
+        <li>대학생 밴드 동아리 부회장</li>
       </ul>
-    </header>
-    <main class="main">
-      <div class="title">
-        <h1>
-          <!-- 타이틀 글자 -->
-        </h1>
-      </div>
-      <div class="profile">
-        <div class="box">
-          <!-- 프로필 정보 -->
-          <div>
-            <h2>윤현수</h2>
-            <div>
-              <!-- profile -->
-            </div>
-          </div>
-          <div>
-            <div id="container"></div>
-          </div>
-        </div>
-      </div>
-      <div class="photo">
-        <div class="box">
-          <!-- 이미지 슬라이드 -->
-          <h2>Photo</h2>
-          <div id="slideShow">
-            <ul class="slides"></ul>
-            <p class="controller">
-              <!-- &lang: 왼쪽 방향 화살표 &rang: 오른쪽 방향 화살표 -->
-              <span class="left">&lang;</span>
-              <span class="right">&rang;</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="career">
-        <div class="box">
-          <!-- 경력 -->
-          <h2>Career</h2>
-          <ul>
-            <!-- career -->
-          </ul>
-        </div>
-      </div>
-      <div class="color">
-        <!-- 컬러정보와 수정기능 -->
-        <h2>Color</h2>
-        <p>여러분의 시간은 무슨 색인가요??</p>
-        <p>
-          1ms단위로 색이 저장되어 있습니다. 총 83,886,080개의 색을 만나보세요~!!
-        </p>
-        <div class="box">
-          <div>
-            <p id="data"></p>
-          </div>
-          <form>
-            <p class="label">시간을 변경해 보세요</p>
-            <input
-              type="text"
-              id="inputTime"
-              placeholder=" H : M : S : ms"
-              onkeyup="enterkey()"
-            />
-            <button id="button">변경</button>
-          </form>
-        </div>
-      </div>
-      <div class="guest">
-        <h2>Guest</h2>
-        <div class="box">
-          <p>여러분의 좋았던 시간을 적어주세요!!</p>
-          <form>
-            <input type="text" placeholder=" H : M : S : ms" />
-            <button>제출</button>
-          </form>
-          <ul></ul>
-        </div>
-      </div>
-    </main>
+    </section>
 
-    <footer class="footer">
-      <p>
-        Author by YunHyunsue <br />
-        Copyright ⓒ 2023 YunHyunsue. All rights reserved.
-      </p>
-    </footer>
-  </body>
+    <section id="photos" aria-labelledby="photo-heading">
+      <h2 id="photo-heading">사진</h2>
+      <div class="gallery">
+        <img id="photo" src="./img/slide/13.jpg" alt="윤현수의 사진 모음" loading="lazy">
+        <div class="gallery-controls">
+          <button type="button" id="previous-photo">이전 사진</button>
+          <span id="photo-count" aria-live="polite">1 / 11</span>
+          <button type="button" id="next-photo">다음 사진</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="guest" aria-labelledby="guest-heading">
+      <h2 id="guest-heading">방명록</h2>
+      <div class="card">
+        <form id="guest-form">
+          <label for="guest-time">기억하고 싶은 시간</label>
+          <p id="guest-hint" class="hint">시:분:초:밀리초 (예: 18:45:00:000). 기록은 이 브라우저에 저장됩니다.</p>
+          <div class="form-row">
+            <input id="guest-time" aria-describedby="guest-hint guest-error" placeholder="18:45:00:000">
+            <button type="submit">저장</button>
+          </div>
+          <p class="error" id="guest-error" role="alert"></p>
+        </form>
+        <ul id="guest-list" class="guest-list" aria-live="polite"></ul>
+      </div>
+    </section>
+  </main>
+  <footer class="shell footer"><span>© 윤현수</span><a href="#top">맨 위로 ↑</a></footer>
+</body>
 </html>

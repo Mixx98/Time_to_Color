@@ -1,48 +1,49 @@
-const ul = document.querySelector(".main > .guest > .box > ul");
-const guest_input = document.querySelector(
-  ".main > .guest > .box > form > input"
-);
-const guest_form = document.querySelector(".main > .guest > .box > form");
+const guestForm = document.querySelector("#guest-form");
+const guestInput = document.querySelector("#guest-time");
+const guestError = document.querySelector("#guest-error");
+const guestList = document.querySelector("#guest-list");
+const guestKey = "timeToColor";
 
-let list = JSON.parse(localStorage.getItem("timeToColor")) || [];
-
-// localStorage에서 값을 불러오는 구문
-const guestTime = new Date();
-
-function update() {
-  ul.innerHTML = "";
-  list.forEach((data) => {
-    const dataList = data.split(":");
-    guestTime.setHours(dataList[0], dataList[1], dataList[2], dataList[3]);
-    const li = document.createElement("li");
-    li.style = `color : ${timeToColor(guestTime)}`;
-    li.innerText = data;
-    ul.appendChild(li);
-  });
+function appendGuestTime(time) {
+  const item = document.createElement("li");
+  const swatch = document.createElement("span");
+  swatch.className = "guest-swatch";
+  swatch.setAttribute("aria-hidden", "true");
+  swatch.style.backgroundColor = timeToColor(time);
+  item.append(swatch, formatTime(time));
+  guestList.append(item);
 }
 
-update();
+function loadGuestTimes() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(guestKey));
+    return Array.isArray(saved) ? saved.filter((entry) => typeof entry === "string" && parseTime(entry)) : [];
+  } catch {
+    return [];
+  }
+}
 
-// localStorage에 값을 넣는 구문
-const pattern = /[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,3}/;
-guest_form.addEventListener("submit", (event) => {
+const guestTimes = loadGuestTimes();
+guestTimes.forEach((entry) => appendGuestTime(parseTime(entry)));
+
+guestForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const inputValue = guest_input.value.replace(/,/g, ":").replace(/(\s*)/g, "");
-
-  if (pattern.test(inputValue)) {
-    const valueList = inputValue.split(":");
-    if (
-      valueList[0] > 23 ||
-      valueList[1] > 59 ||
-      valueList[2] > 59 ||
-      valueList[3] > 999
-    ) {
-      alert(over);
-    } else {
-      list.push(inputValue);
-      guest_input.value = "";
-      localStorage.setItem("timeToColor", JSON.stringify(list));
-      update();
-    }
-  } else alert(over);
+  const time = parseTime(guestInput.value);
+  if (!time) {
+    guestInput.setAttribute("aria-invalid", "true");
+    guestError.textContent = timeError;
+    return;
+  }
+  guestInput.removeAttribute("aria-invalid");
+  const nextTimes = [...guestTimes, formatTime(time)];
+  try {
+    localStorage.setItem(guestKey, JSON.stringify(nextTimes));
+  } catch {
+    guestError.textContent = "이 브라우저에서 기록을 저장할 수 없습니다.";
+    return;
+  }
+  guestTimes.push(nextTimes.at(-1));
+  appendGuestTime(time);
+  guestInput.value = "";
+  guestError.textContent = "";
 });
