@@ -2,10 +2,10 @@ body {
   --header-height: 140px;
   color: #17131b;
   font-family: system-ui, "Noto Sans KR", sans-serif;
-  transition: background-color .45s ease;
+  --page-shade: calc(var(--scroll-progress, 0) * 255);
+  background-color: rgb(var(--page-shade) var(--page-shade) var(--page-shade));
 }
 
-body.scrolled { background-color: #fff; }
 a { color: #7205a4; text-underline-offset: .2em; }
 :focus-visible { outline: 3px solid #9c0fd8; outline-offset: 4px; }
 
@@ -37,11 +37,11 @@ a { color: #7205a4; text-underline-offset: .2em; }
 .header a:hover, .header a:focus-visible { color: #f0f025; }
 
 .header nav, .title > * {
-  transition: opacity .45s ease;
+  opacity: calc(1 - var(--scroll-progress, 0));
 }
+.header nav:has(:focus-visible) { opacity: 1; }
 body.scrolled .header nav:not(:has(:focus-visible)),
 body.scrolled .title > * {
-  opacity: 0;
   pointer-events: none;
 }
 
@@ -74,12 +74,12 @@ body.scrolled .title > * {
 #live-time { font-variant-numeric: tabular-nums; }
 
 .main > div:not(:first-child) {
-  opacity: 1;
+  opacity: var(--scroll-progress, 1);
   transform: none;
-  background: #fff;
   scroll-margin-top: 1rem;
   transition: none;
 }
+.main > div.profile { border-top: 0; }
 .main > .profile, .main > .photo, .main > .career, .main > .color { height: auto; }
 .main > .profile > .box {
   display: grid;
@@ -173,7 +173,7 @@ form .form-row { display: flex; flex-wrap: wrap; gap: .5rem; }
 .error:empty { margin: 0; }
 .guest-list li { list-style: none; }
 .guest-swatch { display: inline-block; width: 1rem; height: 1rem; margin-right: .5rem; vertical-align: middle; border: 1px solid #91869c; border-radius: .2rem; }
-.footer { display: flow-root; background: #fff; }
+.footer { display: flow-root; opacity: var(--scroll-progress, 1); }
 .top-button { z-index: 2; }
 
 @media (max-width: 640px) {
