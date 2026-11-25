@@ -64,6 +64,10 @@ document.querySelector("#color-form").addEventListener("submit", (event) => {
   showColor(time);
 });
 
+titleHeading.addEventListener("pointerover", (event) => {
+  if (event.target.matches(".title-word > span")) updateLiveColor();
+});
+
 titleHeading.addEventListener("pointerdown", (event) => {
   if (event.pointerType !== "touch" || !event.target.matches(".title-word > span")) return;
   titleHeading.querySelector(".touched")?.classList.remove("touched");

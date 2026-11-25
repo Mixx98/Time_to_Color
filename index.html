@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="./normalize.css">
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./media.css">
-  <link rel="stylesheet" href="./portfolio.css?v=scroll-sync">
+  <link rel="stylesheet" href="./portfolio.css?v=center-title">
   <script defer src="./js/app.js?v=scroll-sync"></script>
-  <script defer src="./js/changeColor.js"></script>
+  <script defer src="./js/changeColor.js?v=instant-hover"></script>
   <script defer src="./js/chart.js"></script>
   <script defer src="./js/guest.js"></script>
   <script defer src="./js/slide.js"></script>
@@ -37,8 +37,10 @@
         <span class="title-word" aria-hidden="true"><span>t</span><span>o</span></span>
         <span class="title-word" aria-hidden="true"><span>C</span><span>o</span><span>l</span><span>o</span><span>r</span></span>
       </h1>
-      <p>글자 위에 마우스를 올리거나 터치해 시간의 색을 만나보세요.</p>
-      <p id="live-time" aria-hidden="true"></p>
+      <div class="title-notes">
+        <p>글자 위에 마우스를 올리거나 터치해 시간의 색을 만나보세요.</p>
+        <p id="live-time" aria-hidden="true"></p>
+      </div>
     </div>
 
     <div class="profile" id="profile">
@@ -156,6 +158,11 @@
       </div>
     </div>
   </main>
-  <footer class="footer"><p>© 윤현수</p></footer>
+  <footer class="footer">
+    <p>
+      Author by YunHyunsue <br>
+      Copyright ⓒ 2023 YunHyunsue. All rights reserved.
+    </p>
+  </footer>
 </body>
 </html>
